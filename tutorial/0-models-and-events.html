@@ -54,7 +54,8 @@ myTweet.set('message', 'Hello, world!');
 /* Using the reference, get the message attribute of the model and display it:
  * http://backbonejs.org/#Model-get */
 
-// window.alert(YOUR CODE HERE);
+window.alert(myTweet.get('message'));
+console.log('before', myTweet);
 
 /* - Backbone EVENTS ----------------------------------------------------------
  * Backbone gives us the ability to listen for events on our models,
@@ -76,16 +77,18 @@ myTweet.set('message', 'Hello, world!');
  */
 
 /* Listen for our model's `change` event: */
-myTweet.on('change',
+myTweet.on('change:message',
   function(/* this event holds information about the change: */ e) {
     // Let ourselves know that something was changed:
     console.info('Something in this tweet model was changed!');
     console.log(e);
 
+
     // Write code to log the changed attribute:
-    // console.log(YOUR CODE HERE);
+    console.log('changed', e.changed);
   }
 );
+
 
 /* Backbone works through getters/setters. If you change something on
  * your model as if it were a plain old javascript object,
@@ -98,6 +101,8 @@ myTweet.on('change',
 
 // myTweetYOUR CODE HERE;
 
+  myTweet.set('message', 'checking for change');
+  myTweet.set('hello', 'should have no change');
 /* Once you have the `change` event firing, move on to rendering! */
   </script>
   </body>
